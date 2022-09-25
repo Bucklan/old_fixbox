@@ -14,7 +14,12 @@
     @method('PUT')
     <label for="title">Title</label>
     <input type="text" id="title" name="title" value="{{$post->title}}">
-    <label for="content">Title</label>
+    <select name="category_id">
+        @foreach($categories as $cat)
+            <option @if($cat->id==$post->category_id) selected @endif() value="{{$cat->id}}">{{$cat->name}}</option>
+        @endforeach
+    </select>
+    <label for="content">Content</label>
     <textarea name="content" id="content" cols="30" rows="10">{{$post->content}}</textarea>
     <button type="submit">Update post</button>
 </form>

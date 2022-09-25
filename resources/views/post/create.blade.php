@@ -13,6 +13,12 @@
     @csrf
     <label for="title">Title</label>
     <input type="text" id="title" name="title">
+    <label for="title">Category</label>
+<select name="category_id">
+    @foreach($categories as $cat)
+        <option value="{{$cat->id}}">{{$cat->name}}</option>
+    @endforeach
+</select>
     <label for="content">Title</label>
     <textarea name="content" id="content" cols="30" rows="10"></textarea>
     <button type="submit">Save this contents</button>

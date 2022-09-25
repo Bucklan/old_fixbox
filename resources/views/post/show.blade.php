@@ -12,6 +12,7 @@
 <h3>{{$post->title}}</h3>
 <h3>{{$post->content}}</h3>
 
+
 <a href="{{route('post.edit',$post->id)}}">EDIT</a>
 
 <form action="{{route('post.destroy',$post->id)}}" method="post">
