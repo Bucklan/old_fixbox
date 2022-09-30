@@ -8,13 +8,14 @@
 
 </head>
 <body class="antialiased">
-<a href="{{route('post.index')}}">ALL POSTS</a><br><br>
-<a href="{{route('post.create')}}">Go to Create Page</a><br><br>
+
+<a href="{{route('post.index')}}" class="btn btn-dark">ALL POSTS</a><br><br>
+<a href="{{route('post.create')}}" class="btn btn-success">Go to Create Page</a><br><br>
 @foreach($categories as $cat)
-    <a href="{{route('post.category',$cat->id)}}">{{$cat->name}}</a><br>
+    <a class="btn btn-primary" href="{{route('post.category',$cat->id)}} ">{{$cat->name}}</a><br>
 @endforeach
 @foreach($allPost as $post)
-    <a href="{{route('post.show',[$post->id])}}">{{$post->title}}</a><br>
+    <a class="btn btn-danger" href="{{route('post.show',[$post->id])}}">{{$post->title}}</a><br>
     <p>{{$post->content}}</p>
 @endforeach
 

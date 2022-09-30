@@ -6,6 +6,7 @@
 
     <title>Laravel</title>
 
+
 </head>
 <body class="antialiased">
 <a href="{{route('post.index')}}">Go to Create Page</a>

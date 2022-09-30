@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -8,6 +10,7 @@ Route::get('/',function(){
 });
 Route::get('/post/category/{category}', [PostController::class, 'postsByCategory'])->name('post.category');
 Route::resource('post',PostController::class);
+Route::resource('comments',CommentController::class);
 
 //
 //Route::get('/post', [PostController::class, 'index'])->name('post.index');
