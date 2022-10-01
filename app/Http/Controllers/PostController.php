@@ -27,16 +27,17 @@ class PostController extends Controller
 
     public function store(Request $request,Post $post)
     {
-        Post::create([
-            'title'=>$request->input('title'),
-            'content'=>$request->input('content'),
-            'category_id'=>$request->input('category_id'),
+        $validate =$request->validate([
+            'title'=> 'required|max:255',
+            'content'=> 'required',
+            'category_id' => 'required|numeric|exists:categories,id'
         ]);
-        return redirect()->route('post.index');
+        Post::create($validate);
+        return redirect()->route('post.index')->with('message','post saved');
     }
     public function show(Post $post)
     {
-        return view('post.show',['post'=>$post]);
+        return view('post.show',['post'=>$post,'categories'=>Category::all()]);
     }
 
     public function edit(Post $post)
@@ -45,16 +46,17 @@ class PostController extends Controller
     }
     public function update(Request $request, Post $post)
     {
-        $post->update([
-            'title'=>$request->input('title'),
-            'content'=>$request->input('content'),
-            'category_id'=>$request->input('category_id'),
+        $validate = $request->validate([
+            'title'=> 'required|max:255',
+            'content'=> 'required',
+            'category_id' => 'required|numeric|exists:categories,id'
         ]);
-        return redirect()->route('post.index');
+        $post->update($validate);
+        return redirect()->route('post.index')->with('message','post successfully changed');
     }
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('message','post successfully deleted');
     }
 }
